@@ -4,6 +4,7 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      ./modules/minecraft-server.nix
     ];
 
   boot.loader.grub.enable = true;
@@ -15,13 +16,16 @@
 
   users.users.admin = {
     isNormalUser = true;
-    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" ];
     openssh.authorizedKeys.keys = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJZxiAIsF13XqqxG0QzGFhT3iLDMsu2snb0wJOPUUq8e chris@deskpin" ];
   };
 
   environment.systemPackages = with pkgs; [
-    neovim    git
+    git
+    neovim
     openssh
+    htop
+    lazygit
   ];
 
   services.openssh.enable = true;
