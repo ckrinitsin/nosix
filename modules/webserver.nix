@@ -19,7 +19,12 @@
         forceSSL = true;
 	useACMEHost = "krinitsin.com";
 	root = "/var/www/recipes.krinitsin.com";
-	serverAliases = [ "rezepte.krinitsin.com" ]
+      };
+      
+      "syncthing.krinitsin.com" = {
+        forceSSL = true;
+	useACMEHost = "krinitsin.com";
+        locations."/".proxyPass = "https://krinitsin.com:8384";
       };
     };
   };
@@ -27,7 +32,7 @@
   security.acme = {
     acceptTerms = true;
     defaults.email = "christian@krinitsin.xyz";
-    certs."krinitsin.com".extraDomainNames = [ "shopping.krinitsin.com" "webmail.krinitsin.com" ];
+    certs."krinitsin.com".extraDomainNames = [ "recipes.krinitsin.com" "webmail.krinitsin.com" "syncthing.krinitsin.com" ];
   };
 
   systemd.services.flask = {
