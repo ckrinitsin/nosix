@@ -2,23 +2,19 @@
 
 {
   imports =
-    [ # Include the results of the hardware scan.
+    [
       ./hardware-configuration.nix
+      ./modules/ssh.nix
+      ./modules/user.nix
       ./modules/minecraft-server.nix
+      ./modules/webserver.nix
+      ./modules/syncthing.nix
+      ./modules/mailserver.nix
     ];
 
-  boot.loader.grub.enable = true;
-  boot.loader.grub.device = "/dev/vda";
-
   networking.hostName = "nixos";
-
   time.timeZone = "Europe/Berlin";
-
-  users.users.admin = {
-    isNormalUser = true;
-    extraGroups = [ "wheel" ];
-    openssh.authorizedKeys.keys = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJZxiAIsF13XqqxG0QzGFhT3iLDMsu2snb0wJOPUUq8e chris@deskpin" ];
-  };
+  networking.firewall.enable = true;
 
   environment.systemPackages = with pkgs; [
     git
@@ -26,15 +22,10 @@
     openssh
     htop
     lazygit
+
+    python312
+    python312Packages.flask
   ];
-
-  services.openssh.enable = true;
-  services.openssh.settings.PasswordAuthentication = false;
-  security.sudo.wheelNeedsPassword = false;
-
-  networking.firewall.enable = true;
-  networking.firewall.allowedTCPPorts = [ 22 ];
-  networking.firewall.allowedUDPPorts = [ ];
 
   system.copySystemConfiguration = true;
   system.stateVersion = "24.11";
