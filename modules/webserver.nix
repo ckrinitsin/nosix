@@ -18,13 +18,14 @@
       "recipes.krinitsin.com" = {
         forceSSL = true;
 	useACMEHost = "krinitsin.com";
-	root = "/var/www/recipes.krinitsin.com";
+	serverAliases = [ "rezepte.krinitsin.com" ];
+        locations."/".proxyPass = "http://localhost:9000";
       };
       
       "syncthing.krinitsin.com" = {
         forceSSL = true;
 	useACMEHost = "krinitsin.com";
-        locations."/".proxyPass = "https://krinitsin.com:8384";
+        locations."/".proxyPass = "https://localhost:8384";
       };
     };
   };
@@ -32,8 +33,14 @@
   security.acme = {
     acceptTerms = true;
     defaults.email = "christian@krinitsin.xyz";
-    certs."krinitsin.com".extraDomainNames = [ "recipes.krinitsin.com" "webmail.krinitsin.com" "syncthing.krinitsin.com" ];
+    certs."krinitsin.com".extraDomainNames = [ "recipes.krinitsin.com" "rezepte.krinitsin.com" "webmail.krinitsin.com" "syncthing.krinitsin.com" ];
   };
+
+
+  environment.systemPackages = with pkgs; [
+    python312
+    python312Packages.flask
+  ];
 
   systemd.services.flask = {
     enable = true;

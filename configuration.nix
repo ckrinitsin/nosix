@@ -10,6 +10,7 @@
       ./modules/webserver.nix
       ./modules/syncthing.nix
       ./modules/mailserver.nix
+      ./modules/mealie.nix
     ];
 
   networking.hostName = "nixos";
@@ -18,13 +19,10 @@
 
   environment.systemPackages = with pkgs; [
     git
-    neovim
-    openssh
-    htop
     lazygit
 
-    python312
-    python312Packages.flask
+    neovim
+    htop
   ];
 
   system.copySystemConfiguration = true;

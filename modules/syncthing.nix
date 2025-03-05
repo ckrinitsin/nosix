@@ -3,7 +3,7 @@
 
   services.syncthing = {
     enable = true;
-    guiAddress = "krinitsin.com:8384";
+    guiAddress = "localhost:8384";
     dataDir = "/var/lib/syncthing";
     openDefaultPorts = true;
   };
