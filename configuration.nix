@@ -11,6 +11,7 @@
       ./modules/syncthing.nix
       ./modules/mailserver.nix
       ./modules/mealie.nix
+      ./modules/polaris.nix
     ];
 
   networking.hostName = "nixos";
