@@ -16,7 +16,7 @@
     loginAccounts = {
       "mail@krinitsin.com" = {
         hashedPasswordFile = "/secret/mail@krinitsin.com";
-        aliases = ["postmaster@krinitsin.com"];
+        aliases = [ "postmaster@krinitsin.com" "christian@krinitsin.com" ];
       };
       "wladislaw@krinitsin.com" = {
         hashedPasswordFile = "/secret/wladislaw@krinitsin.com";
@@ -33,4 +33,6 @@
        $config['smtp_pass'] = "%p";
      '';
   };
+
+  security.acme.certs."krinitsin.com".extraDomainNames = [ "webmail.krinitsin.com" ];
 }

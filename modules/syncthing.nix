@@ -8,5 +8,12 @@
     openDefaultPorts = true;
   };
   
-  networking.firewall.allowedTCPPorts = [ 8384 ];
+  services.nginx.virtualHosts."syncthing.krinitsin.com" = {
+    forceSSL = true;
+    useACMEHost = "krinitsin.com";
+    locations."/".proxyPass = "https://localhost:8384";
+  };
+
+  security.acme.certs."krinitsin.com".extraDomainNames = [ "syncthing.krinitsin.com" ];
+
 }
