@@ -8,7 +8,6 @@
     settings.auth = {
       type = "htpasswd";
       htpasswd_filename = "/secret/caldav_users";
-      htpasswd_encryption = "plain";
     };
   };
 
