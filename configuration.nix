@@ -12,6 +12,7 @@
       ./modules/mailserver.nix
       ./modules/mealie.nix
       ./modules/polaris.nix
+      ./modules/caldav.nix
     ];
 
   networking.hostName = "nixos";
