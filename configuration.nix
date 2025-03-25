@@ -13,6 +13,7 @@
       ./modules/mealie.nix
       ./modules/polaris.nix
       ./modules/caldav.nix
+      ./modules/vaultwarden.nix
     ];
 
   networking.hostName = "nixos";
