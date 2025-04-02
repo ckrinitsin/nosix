@@ -22,4 +22,10 @@
 
   security.acme.certs."krinitsin.com".extraDomainNames = [ "caldav.krinitsin.com" ];
 
+  services.monit.config = ''
+    check process radicale with matching "radicale"
+    start program = "${pkgs.systemd}/bin/systemctl start radicale"
+    stop program = "${pkgs.systemd}/bin/systemctl stop radicale"
+  '';
+
 }

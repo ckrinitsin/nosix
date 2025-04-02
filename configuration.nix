@@ -14,6 +14,7 @@
       ./modules/polaris.nix
       ./modules/caldav.nix
       ./modules/vaultwarden.nix
+      ./modules/monit.nix
     ];
 
   networking.hostName = "nixos";

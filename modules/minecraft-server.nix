@@ -24,4 +24,10 @@ in
     dataDir = "/var/lib/minecraft";
   };
 
+  services.monit.config = ''
+    check process minecraft-server with matching "papermc"
+    start program = "${pkgs.systemd}/bin/systemctl start minecraft-server"
+    stop program = "${pkgs.systemd}/bin/systemctl stop minecraft-server"
+  '';
+
 }

@@ -33,4 +33,10 @@
 
   security.acme.certs."krinitsin.com".extraDomainNames = [ "vault.krinitsin.com" ];
 
+  services.monit.config = ''
+    check process vaultwarden with matching "vaultwarden"
+    start program = "${pkgs.systemd}/bin/systemctl start vaultwarden"
+    stop program = "${pkgs.systemd}/bin/systemctl stop vaultwarden"
+  '';
+
 }

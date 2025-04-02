@@ -18,4 +18,10 @@ in
 
   security.acme.certs."krinitsin.com".extraDomainNames = [ "recipes.krinitsin.com" "rezepte.krinitsin.com" ];
 
+  services.monit.config = ''
+    check process mealie with matching "mealie"
+    start program = "${pkgs.systemd}/bin/systemctl start mealie"
+    stop program = "${pkgs.systemd}/bin/systemctl stop mealie"
+  '';
+
 }

@@ -16,4 +16,10 @@
 
   security.acme.certs."krinitsin.com".extraDomainNames = [ "syncthing.krinitsin.com" ];
 
+  services.monit.config = ''
+    check process syncthing with matching "syncthing"
+    start program = "${pkgs.systemd}/bin/systemctl start syncthing"
+    stop program = "${pkgs.systemd}/bin/systemctl stop syncthing"
+  '';
+
 }

@@ -23,4 +23,10 @@
 
   security.acme.certs."krinitsin.com".extraDomainNames = [ "music.krinitsin.com" ];
 
+  services.monit.config = ''
+    check process polaris with matching "polaris"
+    start program = "${pkgs.systemd}/bin/systemctl start polaris"
+    stop program = "${pkgs.systemd}/bin/systemctl stop polaris"
+  '';
+
 }
