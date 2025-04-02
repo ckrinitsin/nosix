@@ -21,6 +21,10 @@
       "wladislaw@krinitsin.com" = {
         hashedPasswordFile = "/secret/wladislaw@krinitsin.com";
       };
+      "vaultwarden@krinitsin.com" = {
+        hashedPasswordFile = "/secret/vaultwarden@krinitsin.com";
+	sendOnly = true;
+      };
     };
   };
 
