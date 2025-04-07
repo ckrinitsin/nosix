@@ -6,6 +6,8 @@
       ./hardware-configuration.nix
       ./modules/ssh.nix
       ./modules/user.nix
+      ./modules/git/git.nix
+      ./modules/git/cgit.nix
       ./modules/minecraft-server.nix
       ./modules/webserver.nix
       ./modules/syncthing.nix
@@ -25,6 +27,7 @@
   networking.firewall.enable = true;
 
   environment.systemPackages = with pkgs; [
+    jq
     git
     lazygit
 
