@@ -16,6 +16,7 @@
       ./modules/vaultwarden.nix
       #./modules/silverbullet.nix Commented out: silverbullet 0.9 doesn't work with deno 2+
       ./modules/monit.nix
+      ./modules/glance.nix
     ];
 
   networking.hostName = "nixos";
