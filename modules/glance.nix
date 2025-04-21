@@ -34,12 +34,6 @@ in
               {
                 type = "calendar";
               }
-              {
-                type = "iframe";
-                title = "Mensa";
-                source = "https://krinitsin.com/mensa/";
-                height = 350;
-              }
             ];
           }
           {
@@ -71,7 +65,7 @@ in
                   {
                     title = "Git";
                     url = "https://git.krinitsin.com";
-                    icon = "si:git";
+                    icon = "/assets/git.png";
                   }
                   {
                     title = "Mealie";
@@ -81,7 +75,7 @@ in
                   {
                     title = "PDF";
                     url = "https://pdf.krinitsin.com";
-                    icon = "di:stirling-pdf";
+                    icon = "/assets/stirling-pdf.png";
                   }
                   {
                     title = "Polaris";
@@ -103,17 +97,12 @@ in
                     title = "Shopping List";
                     url = "https://krinitsin.com/shopping/";
                     check-url = "https://google.com";
-                    icon = "/assets/monit.png";
-                  }
-                  {
-                    title = "Mensa";
-                    url = "https://krinitsin.com/mensa/";
-                    icon = "/assets/monit.png";
+                    icon = "/assets/shopping-list.png";
                   }
                   {
                     title = "Webmail";
                     url = "https://webmail.krinitsin.com";
-                    icon = "si:roundcube";
+                    icon = "/assets/roundcube.png";
                   }
                 ];
                 type = "monitor";
