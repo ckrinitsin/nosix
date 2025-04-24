@@ -19,7 +19,7 @@
       ./modules/vaultwarden.nix
       ./modules/pdf.nix
       ./modules/atuin.nix
-      #./modules/silverbullet.nix Commented out: silverbullet 0.9 doesn't work with deno 2+
+      ./modules/silverbullet.nix
       ./modules/monit.nix
       ./modules/shopping-list.nix
       ./modules/glance.nix
