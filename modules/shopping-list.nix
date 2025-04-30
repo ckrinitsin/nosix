@@ -8,11 +8,11 @@ let
     src = pkgs.fetchFromGitHub {
       owner = "ckrinitsin";
       repo = "shopping-list";
-      rev = "1e974f70a6c262d0b5db8b177ebb02b46446bfb0";
-      hash = "sha256-QtLOYo7shRoBpExUh4zvkroEjcmfqStRXELQqeAcMs8=";
+      rev = "26d70f0ea7b8dc84b2451b3965d9e81d7b25a9a8";
+      hash = "sha256-HQqzia1KEWLu5y726HIbMH6YtcRBXxwSgURci/xY6x4=";
     };
 
-    vendorHash = "sha256-Q8UzufKbUMnpduciwu9uyHq8WpjgSQWmcJGVdlxs0kk=";
+    vendorHash = "sha256-++/WB1HChwnbwJcfghoGNCUzmfmbtqH/7MJTAyj31Rc=";
   };
 
   port = 10000;
@@ -37,6 +37,7 @@ in
       WorkingDirectory = "/var/lib/shopping-list/";
       Restart = "always";
       User = "shopping-list";
+      EnvironmentFile = "/secret/shopping_list.env";
     };
 
   };
@@ -52,7 +53,6 @@ in
     virtualHosts = {
       "krinitsin.com" = {
 	locations.${base_path} = {
-	  basicAuthFile = "/secret/shopping_auth";
 	  proxyPass = "http://localhost:${toString port}/";
 	  recommendedProxySettings = true;
 	};
