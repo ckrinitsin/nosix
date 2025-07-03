@@ -11,7 +11,14 @@
   services.nginx.virtualHosts."pdf.krinitsin.com" = {
     forceSSL = true;
     useACMEHost = "krinitsin.com";
-    locations."/".proxyPass = "http://localhost:5031";
+    locations."/" = {
+      proxyPass = "http://localhost:5031";
+      recommendedProxySettings = true;
+      extraConfig = ''
+        sub_filter '</body>' '<script> document.querySelectorAll(".go-pro-badge").forEach(badge => badge.remove()); </script></body>';
+        sub_filter_once on;
+      '';
+    };
   };
 
   security.acme.certs."krinitsin.com".extraDomainNames = [ "pdf.krinitsin.com" ];
