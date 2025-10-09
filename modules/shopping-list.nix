@@ -8,8 +8,8 @@ let
     src = pkgs.fetchFromGitHub {
       owner = "ckrinitsin";
       repo = "shopping-list";
-      rev = "26d70f0ea7b8dc84b2451b3965d9e81d7b25a9a8";
-      hash = "sha256-HQqzia1KEWLu5y726HIbMH6YtcRBXxwSgURci/xY6x4=";
+      rev = "723d19d5ee37e607c4c4d9c7b4450b7f8a5aa543";
+      hash = "sha256-QlhUYiQtONXJRCQ23kWW4yO1u9ZPYz93T+BoEmAkLvE=";
     };
 
     vendorHash = "sha256-++/WB1HChwnbwJcfghoGNCUzmfmbtqH/7MJTAyj31Rc=";
