@@ -6,7 +6,7 @@ in
 
   services.mealie = {
     enable = true;
-    package = unstable.mealie;
+    #package = unstable.mealie;
   };
 
   services.nginx.virtualHosts."recipes.krinitsin.com" = {

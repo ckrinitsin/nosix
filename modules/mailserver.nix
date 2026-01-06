@@ -1,17 +1,19 @@
 { config, pkgs, ... }: {
   imports = [
     (builtins.fetchTarball {
-      url = "https://gitlab.com/simple-nixos-mailserver/nixos-mailserver/-/archive/nixos-25.05/nixos-mailserver-nixos-25.05.tar.gz";
-      sha256 = "0jpp086m839dz6xh6kw5r8iq0cm4nd691zixzy6z11c4z2vf8v85";
+      url = "https://gitlab.com/simple-nixos-mailserver/nixos-mailserver/-/archive/nixos-25.11/nixos-mailserver-nixos-25.11.tar.gz";
+      sha256 = "16kanlk74xnj7xgmjsj7pahy31hlxqcbv76xnsg8qbh54b0hwxgq";
     })
   ];
 
   mailserver = {
-    enable = true;
+    enable = false;
     fqdn = "mail.krinitsin.com";
     domains = [ "krinitsin.com" ];
+    stateVersion = 3;
     certificateScheme = "acme-nginx";
     lmtpSaveToDetailMailbox = "no";
+    forwards = { "mail@krinitsin.com" = "ckrinitsin@purelymail@com"; };
 
     # To create the password hashes, use nix-shell -p mkpasswd --run 'mkpasswd -sm bcrypt'
     loginAccounts = {

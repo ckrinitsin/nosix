@@ -1,6 +1,5 @@
 { config, pkgs, lib , ... }:
 {
-
   services.cgit.git = {
     enable = true;
     package = pkgs.cgit-pink;
@@ -9,19 +8,19 @@
     scanPath = "/null";
 
     extraConfig = ''
-      root-title=git.krinitsin
-      root-desc=github mirror
+      root-title=git.krinitsin.com
+      root-desc=
       footer=
       logo=
       css=/cur-cgit.css
 
-      clone-url=git@krinitsin.com:$CGIT_REPO_URL
+      enable-http-clone = 1
+      clone-url=https://git.krinitsin.com/$CGIT_REPO_URL
       snapshots=tar.gz zip
 
       cache-size=1000
 
       enable-index-owner=0
-      enable-http-clone=0
       enable-blame=1
       enable-commit-graph=1
 

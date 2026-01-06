@@ -1,9 +1,9 @@
-{ pkgs, libs, config, ... }:
+{ config, libs, pkgs, ... }:
 {
 
   services.syncthing = {
     enable = true;
-    guiAddress = "localhost:8384";
+    guiAddress = "0.0.0.0:8384";
     dataDir = "/var/lib/syncthing";
     openDefaultPorts = true;
   };

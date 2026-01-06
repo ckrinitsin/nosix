@@ -14,10 +14,6 @@
     locations."/" = {
       proxyPass = "http://localhost:5031";
       recommendedProxySettings = true;
-      extraConfig = ''
-        sub_filter '</body>' '<script> document.querySelectorAll(".go-pro-badge").forEach(badge => badge.remove()); </script></body>';
-        sub_filter_once on;
-      '';
     };
   };
 

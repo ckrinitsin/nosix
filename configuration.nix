@@ -22,6 +22,7 @@
       ./modules/silverbullet.nix
       ./modules/monit.nix
       ./modules/shopping-list.nix
+      ./modules/jellyfin.nix
       ./modules/glance.nix
     ];
 
@@ -37,6 +38,7 @@
     neovim
   ];
 
+  nixpkgs.config.allowUnfree = true;
   system.copySystemConfiguration = true;
   system.stateVersion = "24.11";
 
