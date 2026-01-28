@@ -2,7 +2,7 @@
 {
   services.cgit.git = {
     enable = true;
-    package = pkgs.cgit-pink;
+    package = pkgs.cgit;
     user = "git";
     group = "git";
     scanPath = "/null";
@@ -11,11 +11,12 @@
       root-title=git.krinitsin.com
       root-desc=
       footer=
-      logo=
+      logo=/cat.png
       css=/cur-cgit.css
 
+      clone-url=http://krinitsin.com/$CGIT_REPO_URL
+
       enable-http-clone = 1
-      clone-url=https://git.krinitsin.com/$CGIT_REPO_URL
       snapshots=tar.gz zip
 
       cache-size=1000
@@ -23,7 +24,6 @@
       enable-index-owner=0
       enable-blame=1
       enable-commit-graph=1
-
 
       enable-log-filecount=1
       enable-log-linecount=1
@@ -54,6 +54,7 @@
     forceSSL = true;
     useACMEHost = "krinitsin.com";
     locations."= /cur-cgit.css".alias = /var/www/cur-cgit.css;
+    locations."= /cat.png".alias = /var/www/cat.png;
   };
 
   security.acme.certs."krinitsin.com".extraDomainNames = [ "git.krinitsin.com" ];

@@ -7,7 +7,8 @@
       ./modules/ssh.nix
       ./modules/user.nix
       ./modules/git/git.nix
-      ./modules/git/cgit.nix
+      ./modules/git/legit.nix
+#      ./modules/git/cgit.nix
       ./modules/minecraft-server.nix
       ./modules/webserver.nix
       ./modules/syncthing.nix

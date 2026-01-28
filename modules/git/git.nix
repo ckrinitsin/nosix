@@ -12,14 +12,14 @@
 
   users.groups.git = {};
 
-  services.openssh.extraConfig = ''
-    Match user git
-      AllowTcpForwarding no
-      AllowAgentForwarding no
-      PasswordAuthentication no
-      PermitTTY no
-      X11Forwarding no
-  '';
+  #services.openssh.extraConfig = ''
+  #  Match user git
+  #    AllowTcpForwarding no
+  #    AllowAgentForwarding no
+  #    PasswordAuthentication no
+  #    PermitTTY no
+  #    X11Forwarding no
+  #'';
 
   systemd.services.github-mirror = {
     enable = true;
