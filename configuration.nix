@@ -11,7 +11,7 @@
       ./modules/minecraft-server.nix
       ./modules/webserver.nix
       ./modules/syncthing.nix
-      ./modules/mailserver.nix
+      #./modules/mailserver.nix
       ./modules/matrix/matrix.nix
       ./modules/mealie.nix
       ./modules/polaris.nix
