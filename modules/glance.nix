@@ -1,5 +1,4 @@
-{ pkgs, libs, config, unstable, ... }:
-{
+{ pkgs, libs, config, unstable, ... }: {
 
   services.glance = {
     enable = true;
@@ -21,105 +20,98 @@
       };
     };
 
-    settings.pages = [
-      {
-        name = "Home";
-        columns = [
-          {
-            size = "small";
-            widgets = [
+    settings.pages = [{
+      name = "Home";
+      columns = [
+        {
+          size = "small";
+          widgets = [{ type = "calendar"; }];
+        }
+        {
+          size = "full";
+          widgets = [
+            {
+              location = "Munich, Germany";
+              type = "weather";
+            }
+            {
+              type = "lobsters";
+              title = "News";
+              sort-by = "hot";
+            }
+          ];
+        }
+        {
+          size = "small";
+          widgets = [{
+            cache = "1m";
+            title = "Services";
+            sites = [
               {
-                type = "calendar";
+                title = "Vaultwarden";
+                url = "https://vault.krinitsin.com";
+                icon = "/assets/vaultwarden.png";
+              }
+              {
+                title = "Git";
+                url = "https://git.krinitsin.com";
+                icon = "/assets/git.png";
+              }
+              {
+                title = "Mealie";
+                url = "https://recipes.krinitsin.com";
+                icon = "/assets/mealie.png";
+              }
+              {
+                title = "PDF";
+                url = "https://pdf.krinitsin.com";
+                icon = "/assets/stirling-pdf.png";
+              }
+              {
+                title = "Polaris";
+                url = "https://music.krinitsin.com";
+                icon = "/assets/polaris.webp";
+              }
+              {
+                title = "Radicale";
+                url = "https://caldav.krinitsin.com";
+                icon = "/assets/radicale.png";
+              }
+              {
+                title = "Monit";
+                url = "https://status.krinitsin.com/";
+                check-url = "https://google.com";
+                icon = "/assets/monit.png";
+              }
+              {
+                title = "Shopping List";
+                url = "https://krinitsin.com/shopping/";
+                check-url = "https://google.com";
+                icon = "/assets/shopping-list.png";
+              }
+              {
+                title = "Webmail";
+                url = "https://webmail.krinitsin.com";
+                icon = "/assets/roundcube.png";
               }
             ];
-          }
-          {
-            size = "full";
-            widgets = [
-              {
-                location = "Munich, Germany";
-                type = "weather";
-              }
-              {
-                type = "lobsters";
-                title = "News";
-                sort-by = "hot";
-              }
-            ];
-          }
-          {
-            size = "small";
-            widgets = [
-              {
-                cache = "1m";
-                title = "Services";
-                sites = [
-                  {
-                    title = "Vaultwarden";
-                    url = "https://vault.krinitsin.com";
-                    icon = "/assets/vaultwarden.png";
-                  }
-                  {
-                    title = "Git";
-                    url = "https://git.krinitsin.com";
-                    icon = "/assets/git.png";
-                  }
-                  {
-                    title = "Mealie";
-                    url = "https://recipes.krinitsin.com";
-                    icon = "/assets/mealie.png";
-                  }
-                  {
-                    title = "PDF";
-                    url = "https://pdf.krinitsin.com";
-                    icon = "/assets/stirling-pdf.png";
-                  }
-                  {
-                    title = "Polaris";
-                    url = "https://music.krinitsin.com";
-                    icon = "/assets/polaris.webp";
-                  }
-                  {
-                    title = "Radicale";
-                    url = "https://caldav.krinitsin.com";
-                    icon = "/assets/radicale.png";
-                  }
-                  {
-                    title = "Monit";
-                    url = "https://status.krinitsin.com/";
-                    check-url = "https://google.com";
-                    icon = "/assets/monit.png";
-                  }
-                  {
-                    title = "Shopping List";
-                    url = "https://krinitsin.com/shopping/";
-                    check-url = "https://google.com";
-                    icon = "/assets/shopping-list.png";
-                  }
-                  {
-                    title = "Webmail";
-                    url = "https://webmail.krinitsin.com";
-                    icon = "/assets/roundcube.png";
-                  }
-                ];
-                type = "monitor";
-              }
-            ];
-          }
-        ];
-      }
-    ];
+            type = "monitor";
+          }];
+        }
+      ];
+    }];
 
     openFirewall = true;
   };
-  
+
   services.nginx.virtualHosts."dash.krinitsin.com" = {
     forceSSL = true;
     useACMEHost = "krinitsin.com";
     locations."/".proxyPass = "http://localhost:5678";
   };
 
-  security.acme.certs."krinitsin.com".extraDomainNames = [ "dash.krinitsin.com" ];
+  security.acme.certs."krinitsin.com".extraDomainNames =
+    [ "dash.krinitsin.com" ];
 
   services.monit.config = ''
     check process glance with matching "glance"

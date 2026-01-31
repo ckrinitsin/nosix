@@ -7,7 +7,7 @@
     colmena.url = "github:zhaofengli/colmena";
   };
 
-outputs = { self, nixpkgs, nixpkgs-unstable, colmena }: {
+  outputs = { self, nixpkgs, nixpkgs-unstable, colmena }: {
     nixosConfigurations = {
       nosix = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
@@ -17,14 +17,11 @@ outputs = { self, nixpkgs, nixpkgs-unstable, colmena }: {
             config.allowUnfree = true;
           };
         };
-        modules = [
-          ./configuration.nix
-          ./hardware-configuration.nix
-        ];
+        modules = [ ./configuration.nix ./hardware-configuration.nix ];
       };
     };
 
- colmena = {
+    colmena = {
       meta = {
         nixpkgs = import nixpkgs { system = "x86_64-linux"; };
         specialArgs = {
@@ -35,18 +32,13 @@ outputs = { self, nixpkgs, nixpkgs-unstable, colmena }: {
         };
       };
 
-      # Define your server
       nosix = { name, nodes, ... }: {
         deployment = {
-          targetHost = "krinitsin.com";  # or IP address
-          targetUser = "root";  # or another user with sudo
+          targetHost = "krinitsin.com";
+          targetUser = "root";
         };
 
-        # Import your existing configuration
-        imports = [
-          ./configuration.nix
-	  ./hardware-configuration.nix
-        ];
+        imports = [ ./configuration.nix ./hardware-configuration.nix ];
       };
     };
 

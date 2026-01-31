@@ -1,7 +1,8 @@
 { config, pkgs, ... }: {
   imports = [
     (builtins.fetchTarball {
-      url = "https://gitlab.com/simple-nixos-mailserver/nixos-mailserver/-/archive/nixos-25.11/nixos-mailserver-nixos-25.11.tar.gz";
+      url =
+        "https://gitlab.com/simple-nixos-mailserver/nixos-mailserver/-/archive/nixos-25.11/nixos-mailserver-nixos-25.11.tar.gz";
       sha256 = "16kanlk74xnj7xgmjsj7pahy31hlxqcbv76xnsg8qbh54b0hwxgq";
     })
   ];
@@ -19,26 +20,30 @@
     loginAccounts = {
       "mail@krinitsin.com" = {
         hashedPasswordFile = "/secret/mail@krinitsin.com";
-        aliases = [ "postmaster@krinitsin.com" "christian@krinitsin.com" "@krinitsin.com" ];
+        aliases = [
+          "postmaster@krinitsin.com"
+          "christian@krinitsin.com"
+          "@krinitsin.com"
+        ];
       };
       "wladislaw@krinitsin.com" = {
         hashedPasswordFile = "/secret/wladislaw@krinitsin.com";
       };
       "vaultwarden@krinitsin.com" = {
         hashedPasswordFile = "/secret/vaultwarden@krinitsin.com";
-	sendOnly = true;
+        sendOnly = true;
       };
     };
   };
 
   services.roundcube = {
-     enable = true;
-     hostName = "webmail.krinitsin.com";
-     extraConfig = ''
-       $config['smtp_host'] = "tls://${config.mailserver.fqdn}";
-       $config['smtp_user'] = "%u";
-       $config['smtp_pass'] = "%p";
-     '';
+    enable = true;
+    hostName = "webmail.krinitsin.com";
+    extraConfig = ''
+      $config['smtp_host'] = "tls://${config.mailserver.fqdn}";
+      $config['smtp_user'] = "%u";
+      $config['smtp_pass'] = "%p";
+    '';
   };
 
   services.monit.config = ''
@@ -57,5 +62,6 @@
           stop program = "${pkgs.systemd}/bin/systemctl stop rspamd"
   '';
 
-  security.acme.certs."krinitsin.com".extraDomainNames = [ "webmail.krinitsin.com" ];
+  security.acme.certs."krinitsin.com".extraDomainNames =
+    [ "webmail.krinitsin.com" ];
 }

@@ -17,11 +17,8 @@ let
 
   port = 10000;
   base_path = "/shopping/";
-in
-{
-  environment.systemPackages = [
-    shopping-list
-  ];
+in {
+  environment.systemPackages = [ shopping-list ];
 
   systemd.services.shopping-list = {
     description = "shopping-list";
@@ -47,15 +44,15 @@ in
     isSystemUser = true;
     group = "shopping-list";
   };
-  users.groups.shopping-list = {};
+  users.groups.shopping-list = { };
 
   services.nginx = {
     virtualHosts = {
       "krinitsin.com" = {
-	locations.${base_path} = {
-	  proxyPass = "http://localhost:${toString port}/";
-	  recommendedProxySettings = true;
-	};
+        locations.${base_path} = {
+          proxyPass = "http://localhost:${toString port}/";
+          recommendedProxySettings = true;
+        };
       };
     };
   };

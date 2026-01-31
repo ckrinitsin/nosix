@@ -1,5 +1,4 @@
-{ config, libs, pkgs, unstable, ... }:
-{
+{ config, libs, pkgs, unstable, ... }: {
 
   services.mealie = {
     enable = true;
@@ -13,7 +12,8 @@
     locations."/".proxyPass = "http://localhost:9000";
   };
 
-  security.acme.certs."krinitsin.com".extraDomainNames = [ "recipes.krinitsin.com" "rezepte.krinitsin.com" ];
+  security.acme.certs."krinitsin.com".extraDomainNames =
+    [ "recipes.krinitsin.com" "rezepte.krinitsin.com" ];
 
   services.monit.config = ''
     check process mealie with matching "mealie"

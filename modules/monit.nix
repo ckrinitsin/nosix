@@ -1,5 +1,4 @@
-{ pkgs, libs, config, ... }:
-{
+{ pkgs, libs, config, ... }: {
 
   services.monit = {
     enable = true;
@@ -29,7 +28,7 @@
       check network network interface ens3
     '';
   };
-  
+
   services.nginx.virtualHosts."status.krinitsin.com" = {
     forceSSL = true;
     useACMEHost = "krinitsin.com";
@@ -37,6 +36,7 @@
     locations."/".proxyPass = "http://localhost:2812";
   };
 
-  security.acme.certs."krinitsin.com".extraDomainNames = [ "status.krinitsin.com" ];
+  security.acme.certs."krinitsin.com".extraDomainNames =
+    [ "status.krinitsin.com" ];
 
 }

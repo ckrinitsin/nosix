@@ -1,5 +1,4 @@
-{ config, libs, pkgs, ... }:
-{
+{ config, libs, pkgs, ... }: {
 
   services.syncthing = {
     enable = true;
@@ -7,14 +6,15 @@
     dataDir = "/var/lib/syncthing";
     openDefaultPorts = true;
   };
-  
+
   services.nginx.virtualHosts."syncthing.krinitsin.com" = {
     forceSSL = true;
     useACMEHost = "krinitsin.com";
     locations."/".proxyPass = "https://localhost:8384";
   };
 
-  security.acme.certs."krinitsin.com".extraDomainNames = [ "syncthing.krinitsin.com" ];
+  security.acme.certs."krinitsin.com".extraDomainNames =
+    [ "syncthing.krinitsin.com" ];
 
   services.monit.config = ''
     check process syncthing with matching "syncthing"

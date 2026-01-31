@@ -1,5 +1,4 @@
-{ config, pkgs, lib , ... }:
-{
+{ config, pkgs, lib, ... }: {
   services.cgit.git = {
     enable = true;
     package = pkgs.cgit;
@@ -57,6 +56,7 @@
     locations."= /cat.png".alias = /var/www/cat.png;
   };
 
-  security.acme.certs."krinitsin.com".extraDomainNames = [ "git.krinitsin.com" ];
+  security.acme.certs."krinitsin.com".extraDomainNames =
+    [ "git.krinitsin.com" ];
 
 }

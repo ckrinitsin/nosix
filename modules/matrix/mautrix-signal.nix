@@ -1,10 +1,9 @@
-{ pkgs, libs, config, ... }:
-{
+{ pkgs, libs, config, ... }: {
 
   services.mautrix-signal = {
     enable = true;
     settings = {
-    
+
       appservice = {
         as_token = "";
         bot = {
@@ -20,12 +19,8 @@
 
       bridge = {
         command_prefix = "!signal";
-        permissions = {
-          "krinitsin.com" = "admin";
-        };
-        relay = {
-          enabled = true;
-        };
+        permissions = { "krinitsin.com" = "admin"; };
+        relay = { enabled = true; };
       };
 
       database = {
@@ -33,23 +28,20 @@
         uri = "file:/var/lib/mautrix-signal/mautrix-signal.db";
       };
 
-      homeserver = {
-        address = "http://localhost:8008";
-      };
+      homeserver = { address = "http://localhost:8008"; };
 
       logging = {
         min_level = "info";
-        writers = [
-          {
-            format = "pretty-colored";
-            time_format = " ";
-            type = "stdout";
-          }
-        ];
+        writers = [{
+          format = "pretty-colored";
+          time_format = " ";
+          type = "stdout";
+        }];
       };
 
       network = {
-        displayname_template = "{{or .ProfileName .PhoneNumber \"Unknown user\"}}";
+        displayname_template =
+          ''{{or .ProfileName .PhoneNumber "Unknown user"}}'';
       };
 
     };

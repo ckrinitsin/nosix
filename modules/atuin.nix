@@ -1,5 +1,4 @@
-{ pkgs, libs, config, ... }:
-{
+{ pkgs, libs, config, ... }: {
 
   services.atuin = {
     enable = true;
@@ -13,7 +12,8 @@
     locations."/".proxyPass = "http://localhost:8889";
   };
 
-  security.acme.certs."krinitsin.com".extraDomainNames = [ "atuin.krinitsin.com" ];
+  security.acme.certs."krinitsin.com".extraDomainNames =
+    [ "atuin.krinitsin.com" ];
 
   services.monit.config = ''
     check process atuin with matching "atuin"

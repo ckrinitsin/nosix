@@ -1,5 +1,4 @@
-{ config, pkgs, libs, ... }:
-{
+{ config, pkgs, libs, ... }: {
 
   services.radicale = {
     enable = true;
@@ -20,7 +19,8 @@
     };
   };
 
-  security.acme.certs."krinitsin.com".extraDomainNames = [ "caldav.krinitsin.com" ];
+  security.acme.certs."krinitsin.com".extraDomainNames =
+    [ "caldav.krinitsin.com" ];
 
   services.monit.config = ''
     check process radicale with matching "radicale"

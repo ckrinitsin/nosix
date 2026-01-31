@@ -1,18 +1,10 @@
-{ pkgs, libs, config, ... }:
-{
+{ pkgs, libs, config, ... }: {
 
-  imports = 
-    [
-      ./mautrix-whatsapp.nix
-      ./mautrix-signal.nix
-      ./element.nix
-    ];
+  imports = [ ./mautrix-whatsapp.nix ./mautrix-signal.nix ./element.nix ];
 
   nixpkgs.config.permittedInsecurePackages = [ "olm-3.2.16" ];
 
-  services.postgresql = {
-    enable = true;
-  };
+  services.postgresql = { enable = true; };
 
   services.matrix-synapse = {
     enable = true;
@@ -30,7 +22,8 @@
     locations."/".proxyPass = "http://localhost:8008";
   };
 
-  security.acme.certs."krinitsin.com".extraDomainNames = [ "matrix.krinitsin.com" ];
+  security.acme.certs."krinitsin.com".extraDomainNames =
+    [ "matrix.krinitsin.com" ];
 
   services.monit.config = ''
     check process synapse with matching "synapse"

@@ -1,5 +1,4 @@
-{ pkgs, libs, config, ... }:
-{
+{ pkgs, libs, config, ... }: {
 
   virtualisation.docker.enable = true;
 
@@ -12,14 +11,15 @@
       environmentFiles = [ "/secret/silverbullet.env" ];
     };
   };
-  
+
   services.nginx.virtualHosts."notes.krinitsin.com" = {
     forceSSL = true;
     useACMEHost = "krinitsin.com";
     locations."/".proxyPass = "http://localhost:3000";
   };
 
-  security.acme.certs."krinitsin.com".extraDomainNames = [ "notes.krinitsin.com" ];
+  security.acme.certs."krinitsin.com".extraDomainNames =
+    [ "notes.krinitsin.com" ];
 
   services.monit.config = ''
     check process silverbullet with matching "silverbullet"

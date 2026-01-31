@@ -1,5 +1,4 @@
-{ config, libs, pkgs, ...}:
-{
+{ config, libs, pkgs, ... }: {
 
   services.vaultwarden = {
     enable = true;
@@ -31,7 +30,8 @@
     };
   };
 
-  security.acme.certs."krinitsin.com".extraDomainNames = [ "vault.krinitsin.com" ];
+  security.acme.certs."krinitsin.com".extraDomainNames =
+    [ "vault.krinitsin.com" ];
 
   services.monit.config = ''
     check process vaultwarden with matching "vaultwarden"

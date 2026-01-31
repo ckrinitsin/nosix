@@ -5,8 +5,7 @@ let
     rev = "e7529a549dc1e4fed511efaad82d2e57abdb656e";
     hash = "sha256-0xyUrU7SCqGE8jkMphrvAxy/Vuph4ttSYDNPrTM60+Y=";
   };
-in
-{
+in {
 
   users.users.nginx.extraGroups = [ "acme" ];
   services.nginx = {
@@ -20,7 +19,7 @@ in
         forceSSL = true;
         enableACME = true;
         root = "${webpage-root}";
-	    serverAliases = [ "www.krinitsin.com" ];
+        serverAliases = [ "www.krinitsin.com" ];
       };
     };
   };

@@ -19,30 +19,27 @@ let
 
   conf = (pkgs.formats.yaml { }).generate "something" {
     repo = {
-        scanPath = "/var/lib/git-server";
-        readme = [ "readme" "README" "README.md" ];
-        ignorePattern = [ "^\\..*\\.git" ];
-        mainBranch = [ "master" "main" ];
+      scanPath = "/var/lib/git-server";
+      readme = [ "readme" "README" "README.md" ];
+      ignorePattern = [ "^\\..*\\.git" ];
+      mainBranch = [ "master" "main" ];
     };
     dirs = {
-        static = "${legit-src}/static";
-        templates = "${legit-src}/templates";
+      static = "${legit-src}/static";
+      templates = "${legit-src}/templates";
     };
     meta = {
-        title = "git.krinitsin.com";
-        syntaxHighlight = "evergarden";
+      title = "git.krinitsin.com";
+      syntaxHighlight = "evergarden";
     };
     server = {
-        name = "git.krinitsin.com";
-        host = "127.0.0.1";
-        port = port;
+      name = "git.krinitsin.com";
+      host = "127.0.0.1";
+      port = port;
     };
   };
-in
-{
-  environment.systemPackages = [
-    legit
-  ];
+in {
+  environment.systemPackages = [ legit ];
 
   systemd.services.legit = {
     description = "legit";
@@ -63,9 +60,7 @@ in
       "git.krinitsin.com" = {
         forceSSL = true;
         enableACME = true;
-	    locations."/" = {
-	      proxyPass = "http://127.0.0.1:${toString port}";
-	    };
+        locations."/" = { proxyPass = "http://127.0.0.1:${toString port}"; };
       };
     };
   };

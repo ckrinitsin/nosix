@@ -1,11 +1,8 @@
-{ pkgs, libs, config, ... }:
-{
+{ pkgs, libs, config, ... }: {
 
   services.stirling-pdf = {
     enable = true;
-    environment = {
-      SERVER_PORT = 5031;
-    };
+    environment = { SERVER_PORT = 5031; };
   };
 
   services.nginx.virtualHosts."pdf.krinitsin.com" = {
@@ -17,7 +14,8 @@
     };
   };
 
-  security.acme.certs."krinitsin.com".extraDomainNames = [ "pdf.krinitsin.com" ];
+  security.acme.certs."krinitsin.com".extraDomainNames =
+    [ "pdf.krinitsin.com" ];
 
   services.monit.config = ''
     check process stirling-pdf with matching "stirling-pdf"

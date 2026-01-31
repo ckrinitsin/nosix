@@ -1,5 +1,4 @@
-{ config, libs, pkgs, unstable, ... }:
-{
+{ config, libs, pkgs, unstable, ... }: {
 
   services.minecraft-server = {
     package = unstable.papermc;
