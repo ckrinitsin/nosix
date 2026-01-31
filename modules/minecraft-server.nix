@@ -1,7 +1,4 @@
-{ config, libs, pkgs, ... }:
-let
-  unstable = import <nixos-unstable> {};
-in
+{ config, libs, pkgs, unstable, ... }:
 {
 
   services.minecraft-server = {

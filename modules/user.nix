@@ -10,5 +10,6 @@
     ];
   };
   security.sudo.wheelNeedsPassword = false;
+  users.users.root.openssh.authorizedKeys.keys = config.users.users.admin.openssh.authorizedKeys.keys;
 
 }

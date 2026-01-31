@@ -3,7 +3,6 @@
 {
   imports =
     [
-      ./hardware-configuration.nix
       ./modules/ssh.nix
       ./modules/user.nix
       ./modules/git/git.nix
@@ -27,7 +26,9 @@
       ./modules/glance.nix
     ];
 
-  networking.hostName = "nixos";
+  nix.settings.experimental-features = "nix-command flakes";
+
+  networking.hostName = "nosix";
   time.timeZone = "Europe/Berlin";
   networking.firewall.enable = true;
 
@@ -40,8 +41,6 @@
   ];
 
   nixpkgs.config.allowUnfree = true;
-  system.copySystemConfiguration = true;
   system.stateVersion = "24.11";
-
 }
 

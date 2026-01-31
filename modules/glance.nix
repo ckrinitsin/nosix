@@ -1,7 +1,4 @@
-{ pkgs, libs, config, ... }:
-let
-  unstable = import <nixos-unstable> {};
-in
+{ pkgs, libs, config, unstable, ... }:
 {
 
   services.glance = {
