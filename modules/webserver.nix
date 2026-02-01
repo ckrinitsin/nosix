@@ -2,8 +2,8 @@
 let
   webpage-root = pkgs.fetchgit {
     url = "https://git.krinitsin.com/krinitsin.com.git";
-    rev = "e7529a549dc1e4fed511efaad82d2e57abdb656e";
-    hash = "sha256-0xyUrU7SCqGE8jkMphrvAxy/Vuph4ttSYDNPrTM60+Y=";
+    rev = "848c234a10bc80889721533fbc0174cfcff059bc";
+    hash = "sha256-s8MXHyjYZ9Ovfsk6lSajh3PB5RS7xhlLnGAIESYCPak=";
   };
 in {
 
