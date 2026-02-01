@@ -1,8 +1,9 @@
 { pkgs, libs, config, ... }: {
 
-  services.stirling-pdf = {
-    enable = true;
-    environment = { SERVER_PORT = 5031; };
+  virtualisation.oci-containers.containers."stirling-pdf" = {
+    image = "ghcr.io/stirling-tools/stirling-pdf:1.6.0";
+    ports = [ "127.0.0.1:5031:8080" ];
+    volumes = [ "/var/lib/stirling-pdf:/space" ];
   };
 
   services.nginx.virtualHosts."pdf.krinitsin.com" = {
