@@ -48,6 +48,10 @@
             title = "Services";
             sites = [
               {
+                title = "Homepage";
+                url = "https://krinitsin.com";
+              }
+              {
                 title = "Vaultwarden";
                 url = "https://vault.krinitsin.com";
                 icon = "/assets/vaultwarden.png";
@@ -88,11 +92,6 @@
                 url = "https://krinitsin.com/shopping/";
                 check-url = "https://google.com";
                 icon = "/assets/shopping-list.png";
-              }
-              {
-                title = "Webmail";
-                url = "https://webmail.krinitsin.com";
-                icon = "/assets/roundcube.png";
               }
             ];
             type = "monitor";
