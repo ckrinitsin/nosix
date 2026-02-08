@@ -3,8 +3,8 @@
 let
   legit-src = pkgs.fetchgit {
     url = "https://git.krinitsin.com/legit.git";
-    rev = "15164a810bd16932d651569d321ac18982e1a4ad";
-    hash = "sha256-7D9DHl/P+P+EYeKwWRqfVeeIpPoJs6F4UGIR4MX9vBA=";
+    rev = "5da577c0eaf7736ded36f0214344a7ff5d8da533";
+    hash = "sha256-zLuDpmygGhDWCYYNPFbVWNrT6bchUXhm6iTsl2UDW1Y=";
   };
 
   legit = pkgs.buildGoModule rec {
@@ -29,8 +29,8 @@ let
       templates = "${legit-src}/templates";
     };
     meta = {
-      title = "git.krinitsin.com";
-      syntaxHighlight = "evergarden";
+      title = "chris' forge";
+      description = "patches via <repo>@krinitsin.com";
     };
     server = {
       name = "git.krinitsin.com";
