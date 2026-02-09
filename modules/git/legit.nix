@@ -3,8 +3,8 @@
 let
   legit-src = pkgs.fetchgit {
     url = "https://git.krinitsin.com/legit.git";
-    rev = "5da577c0eaf7736ded36f0214344a7ff5d8da533";
-    hash = "sha256-zLuDpmygGhDWCYYNPFbVWNrT6bchUXhm6iTsl2UDW1Y=";
+    rev = "301bbc21f77165916f8550ba567dbfa94f18c434";
+    hash = "sha256-1xgH1EzMqdJC7qkM3BD9lQlynrFu1UMpt854C9nKook=";
   };
 
   legit = pkgs.buildGoModule rec {
