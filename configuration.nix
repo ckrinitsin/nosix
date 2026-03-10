@@ -23,6 +23,7 @@
     ./modules/shopping-list.nix
     ./modules/jellyfin.nix
     ./modules/glance.nix
+    ./modules/linkwarden.nix
   ];
 
   nix.settings.experimental-features = "nix-command flakes";
